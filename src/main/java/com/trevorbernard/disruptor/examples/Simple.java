@@ -17,12 +17,20 @@ public class Simple {
         final EventHandler<ValueEvent> handler = new EventHandler<ValueEvent>() {
             // event will eventually be recycled by the Disruptor after it wraps
             public void onEvent(final ValueEvent event, final long sequence, final boolean endOfBatch) throws Exception {
-                System.out.println("Sequence: " + sequence);
+                System.out.println("handler Sequence: " + sequence);
+                System.out.println("ValueEvent: " + event.getValue());
+            }
+        };
+
+        final EventHandler<ValueEvent> handler1 = new EventHandler<ValueEvent>() {
+            // event will eventually be recycled by the Disruptor after it wraps
+            public void onEvent(final ValueEvent event, final long sequence, final boolean endOfBatch) throws Exception {
+                System.out.println("handler1 Sequence: " + sequence);
                 System.out.println("ValueEvent: " + event.getValue());
             }
         };
         // Build dependency graph
-        disruptor.handleEventsWith(handler);
+        disruptor.handleEventsWith(handler,handler1);
         RingBuffer<ValueEvent> ringBuffer = disruptor.start();
 
         for (long i = 10; i < 2000; i++) {

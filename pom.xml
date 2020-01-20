@@ -8,11 +8,13 @@
   <name>disruptor-example</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
     <dependency>
-      <groupId>com.googlecode.disruptor</groupId>
+      <groupId>com.lmax</groupId>
       <artifactId>disruptor</artifactId>
-      <version>2.10.4</version>
+      <version>3.4.2</version>
     </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
